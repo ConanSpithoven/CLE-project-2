@@ -36,7 +36,6 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
 MFRC522::MIFARE_Key key;
-byte c[18]; //contains rfid tag coords
 int fail = 0;
 int id = 0;
 
@@ -55,6 +54,7 @@ void setup() {
     while (!Serial);    // Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
     SPI.begin();        // Init SPI bus
     mfrc522.PCD_Init(); // Init MFRC522 card
+    
     randomSeed(analogRead(0));
     id = random(0, 10000);
     Serial.print(id);
